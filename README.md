@@ -22,3 +22,5 @@ This Workshop POCs a Log Management and Threat Detection Platform on Astra DB an
 
 ## Deployment Steps
 Please follow the steps in order.
+
+### Step One: Create an Astra Database
