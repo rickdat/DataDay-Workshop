@@ -1,4 +1,4 @@
-#DataDay
+# DataDay
 
 <a href="https://gitpod.io/#https://github.com/rickdat/DataDay-Producer">
   <img
@@ -7,10 +7,10 @@
   />
 </a>
 
-##Summary
+## Summary
 This Workshop POCs a Log Management and Threat Detection Platform on Astra DB and Astra Streaming. This small application collects logs fm multiple servers, performs analytics on them and  generates alerts based on malware signatures that match an Indicator of compromise. 
 
-##The application has the following components:
+## The application has the following components:
 
 **A logs shipper:** collects logs from multiple servers using their “syslog” file and sends them to Astra Streaming.
 **A Pulsar Topic:** receives the logs from multiple sources, applies transformations and inserts into a database.
