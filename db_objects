@@ -1,0 +1,25 @@
+CREATE TABLE events (
+    device_name text,
+    date text,
+	event_id timeuuid,
+    data text,
+    PRIMARY KEY ((device_name), date, event_id )
+) WITH CLUSTERING ORDER BY (date ASC, event_id ASC);
+
+CREATE TABLE logs.alerts (
+    device_name text,
+    date text,
+	event_id timeuuid,
+    data text,
+    PRIMARY KEY ((device_name), date, event_id )
+) WITH CLUSTERING ORDER BY (date ASC, event_id ASC);
+
+CREATE TABLE logs.metrics (
+	id text PRIMARY KEY,
+	memory int,
+	cpu int,
+	priviledge_escalation int);
+	
+	
+
+	
