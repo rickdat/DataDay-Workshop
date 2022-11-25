@@ -13,7 +13,10 @@ This Workshop POCs a Log Management and Threat Detection Platform on Astra DB an
 ## The application has the following components:
 
 **A logs shipper:** collects logs from multiple servers using their “syslog” file and sends them to Astra Streaming.
+
 **A Pulsar Topic:** receives the logs from multiple sources, applies transformations and inserts into a database.
+
 **Astra DB:** a low latency, distributed and fault-tolerant datastore for real-time reads and writes.
+
 **Data Analyzer:** a simple correlation engine created in Python using Pandas.
 
