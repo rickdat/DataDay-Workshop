@@ -7,7 +7,8 @@ ASTRA_DB_REGION="us-central1"
 ASTRA_DB_KEYSPACE="logs"
 ASTRA_DB_APPLICATION_TOKEN="AstraCS:XilDZTkQebsDuWaXRcZAUSok:217a4ba6f471118ef80b97a000fd0769463799c056c514dbd68b3645038505ae"
 get_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/events/rows/'
-post_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/metrics/rows/'
+metrics_post_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/metrics/rows/'
+alerts_post_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/alerts/rows/'
 
 # get rows frm astra table and save result in a list
 def get_rows():
@@ -29,7 +30,7 @@ malware_alert=df[df['data'].str.contains('262144')]
 
 # add rows to astra table
 
-jsontext = {"columns": [
+jsontext_metrics = {"columns": [
         {
             "name": "id",
             "value": str(uuid.uuid4())
@@ -49,8 +50,35 @@ jsontext = {"columns": [
     ]}
 
 
-x = requests.post(post_url, headers={"X-Cassandra-Token": ASTRA_DB_APPLICATION_TOKEN, "Content-Type": "application/json", "Accept": "application/json"}, json=jsontext)
-x = x.json()
-print(x)
 
 
+def add_rows(body, url):
+    x = requests.post(url, headers={"X-Cassandra-Token": ASTRA_DB_APPLICATION_TOKEN, "Content-Type": "application/json", "Accept": "application/json"}, json=body)
+    x = x.json()
+    print(x)
+    return(x)
+
+# add rows to astra table for each row in the "malware_alert" dataframe
+for index, row in malware_alert.iterrows():
+    jsontext_events = {"columns": [
+        {
+            "name": "device_name",
+            "value": row['device_name']
+        },
+        {
+            "name": "date",
+            "value": row['date']
+        },
+        {
+            "name": "event_id",
+            "value": row['event_id']
+        },
+        {
+            "name": "data",
+            "value": row['data']
+        }
+    ]}
+    print(jsontext_events)
+    add_rows(jsontext_events,alerts_post_url)
+
+add_rows(jsontext_metrics,metrics_post_url)
