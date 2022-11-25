@@ -1,7 +1,6 @@
 from os import lseek
 import pulsar, time
 from pulsar.schema import *
-import pandas as pd
 import time
 import socket
 import uuid 
@@ -26,7 +25,7 @@ producer = client.create_producer('persistent://datastax-atp/events-namespace/ev
 
 # Function to read ubuntu system logs
 def get_logs():
-    with open('/var/log/syslog', 'r') as f:
+    with open('./var/log/syslog', 'r') as f:
         while True:
             line = f.readline()
             if not line:
