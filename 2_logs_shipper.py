@@ -23,7 +23,7 @@ client = pulsar.Client(service_url,
 
 producer = client.create_producer('persistent://datastax-atp/events-namespace/events-topic',schema=JsonSchema(Events))
 
-# Function to read ubuntu system logs
+# Function to read ubuntu system logs. Remove the "." before /var when in a real environment.
 def get_logs():
     with open('./var/log/syslog', 'r') as f:
         while True:
