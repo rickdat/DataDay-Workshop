@@ -31,8 +31,8 @@ def get_logs():
             if not line:
                 time.sleep(0.1)
                 continue
-            print(str(socket.gethostname()),str(datetime.strftime(now,'%Y-%m-%dT%H:%M:%S')),str(uuid.uuid4()),str(line))
-            producer.send(Events(device_name = str("THIRDHOST"), date=str(now.isoformat()), event_id=str(uuid.uuid1()), data=str(line)))
+            print(str(line.split(" ")[3]),str(datetime.strftime(now,'%Y-%m-%dT%H:%M:%S')),str(uuid.uuid4()),str(line))
+            producer.send(Events(device_name = str(line.split(" ")[3]), date=str(now.isoformat()), event_id=str(uuid.uuid1()), data=str(line)))
             
 # function to extract datetime from syslog message
 def get_datetime(line):
