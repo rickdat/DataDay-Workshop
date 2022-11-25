@@ -20,3 +20,5 @@ This Workshop POCs a Log Management and Threat Detection Platform on Astra DB an
 
 **Data Analyzer:** a simple correlation engine created in Python using Pandas.
 
+## Deployment Steps
+Please follow the steps in order.
