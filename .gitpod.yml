@@ -4,4 +4,4 @@
 
 tasks:
   - init: pip install pulsar, pulsar-client, pandas
-    command: python main.py
+    command: echo "Environment ready, execute the Python scripts in order"
