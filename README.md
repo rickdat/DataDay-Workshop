@@ -39,7 +39,9 @@ Please follow the steps in order.
 - Under "Sink-Specific Configuration" select your Astra Database, enter the token Astra DB token you saved in a previous step. Select the "logs" keyspace and type "events" as your table name. If the configuration was applies correctly, the mapping should generate automatically.
 - Generate a streaming tenant token by clicking on "Settings" and then "Create token" and save it for the next steps.
 
-### Step Two: Generate data
+### Step Two: Generate and Process data
 - Open this Github repo on GitPod and open the "2_logs_shipper.py" file.
 - Replace the "service_url" and "token" values by your streaming tenant values. You can get your "service_url" from the "Connect" tab of your streaming tenant. It appears after "Broker Service URL".
-
+- Execute the "2_logs_shipper.py" file.
+- Open the "3_data_analyzer.py" script and enter your "ASTRA_DB_ID" and "ASTRA_DB_APPLICATION_TOKEN"
+- Execute the "3_data_analyzer.py" script
