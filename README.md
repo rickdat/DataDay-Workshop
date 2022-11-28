@@ -23,4 +23,15 @@ This Workshop POCs a Log Management and Threat Detection Platform on Astra DB an
 ## Deployment Steps
 Please follow the steps in order.
 
-### Step One: Create an Astra Database
+### Step One: Create an Astra Database and Streaming tenant
+**Create an Astra Database**
+- Visit https://astra.datastax.com/ and create an account.
+- Click on "Databases" and then "Create Database". For this POC, your database should be on "Google Cloud" and the "us-central1" region. Your keyspace should be called "logs"
+- Once database is created, copy the "token" value. Then click on "Go to database"
+- Click on the "Connect tab" of your database and copy your database is "ASTRA_DB_ID", below the "Configure your environment" step. (Step 3)
+- Click on the "CQL Console" tab and create the tables in the "1_db_objects" file.
+
+**Create an streaming tenant**
+- From the left hand menu, click on "Streaming" and then click "Create Stream"
+- Create your tenant on "Google Cloud" and the "us-central1" region.
+- Click on the "Namespace and Topics" tab. Create a new namespace called "events-namespace" and add a persistent Topic named "events-topic" to the namespace. 
