@@ -1,4 +1,4 @@
-CREATE TABLE events (
+CREATE TABLE logs.events (
     device_name text,
     date text,
 	event_id timeuuid,
