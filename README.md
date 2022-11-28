@@ -28,10 +28,12 @@ Please follow the steps in order.
 - Visit https://astra.datastax.com/ and create an account.
 - Click on "Databases" and then "Create Database". For this POC, your database should be on "Google Cloud" and the "us-central1" region. Your keyspace should be called "logs"
 - Once database is created, copy the "token" value. Then click on "Go to database"
-- Click on the "Connect tab" of your database and copy your database is "ASTRA_DB_ID", below the "Configure your environment" step. (Step 3)
+- Click on the "Connect tab" of your database and copy and save your database is "ASTRA_DB_ID", below the "Configure your environment" step. (Step 3)
 - Click on the "CQL Console" tab and create the tables in the "1_db_objects" file.
 
 **Create an streaming tenant**
 - From the left hand menu, click on "Streaming" and then click "Create Stream"
 - Create your tenant on "Google Cloud" and the "us-central1" region.
-- Click on the "Namespace and Topics" tab. Create a new namespace called "events-namespace" and add a persistent Topic named "events-topic" to the namespace. 
+- Click on the "Namespace and Topics" tab. Create a new namespace called "events-namespace" and add a persistent Topic named "events-topic" to the namespace.
+- Click on "Sinks" and then "Create Sink" named "events-sink". Select the "events-namespace" and Sink type "Astra DB". Under "Connect Topics" select your "events-topic"
+- Under "Sink-Specific Configuration" select your Astra Database, enter the token Astra DB token you saved in a previous step. Select the "logs" keyspace and type "events" as your table name. If the configuration was applies correctly, the mapping should generate automatically.
