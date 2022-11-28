@@ -1,11 +1,6 @@
 # DataDay
 
-<a href="https://gitpod.io/#https://github.com/rickdat/DataDay-Producer">
-  <img
-    src="https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod"
-    alt="Launch on Gitpod"
-  />
-</a>
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rickdat/DataDay-Producer)
 
 ## Summary
 This Workshop POCs a Log Management and Threat Detection Platform on Astra DB and Astra Streaming. This small application collects logs fm multiple servers, performs analytics on them and  generates alerts based on malware signatures that match an Indicator of compromise. 
