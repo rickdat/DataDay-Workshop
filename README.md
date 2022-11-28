@@ -31,9 +31,15 @@ Please follow the steps in order.
 - Click on the "Connect tab" of your database and copy and save your database is "ASTRA_DB_ID", below the "Configure your environment" step. (Step 3)
 - Click on the "CQL Console" tab and create the tables in the "1_db_objects" file.
 
-**Create an streaming tenant**
+**Create a streaming tenant**
 - From the left hand menu, click on "Streaming" and then click "Create Stream"
 - Create your tenant on "Google Cloud" and the "us-central1" region.
 - Click on the "Namespace and Topics" tab. Create a new namespace called "events-namespace" and add a persistent Topic named "events-topic" to the namespace.
 - Click on "Sinks" and then "Create Sink" named "events-sink". Select the "events-namespace" and Sink type "Astra DB". Under "Connect Topics" select your "events-topic"
 - Under "Sink-Specific Configuration" select your Astra Database, enter the token Astra DB token you saved in a previous step. Select the "logs" keyspace and type "events" as your table name. If the configuration was applies correctly, the mapping should generate automatically.
+- Generate a streaming tenant token by clicking on "Settings" and then "Create token" and save it for the next steps.
+
+### Step Two: Generate data
+- Open this Github repo on GitPod and open the "2_logs_shipper.py" file.
+- Replace the "service_url" and "token" values by your streaming tenant values. You can get your "service_url" from the "Connect" tab of your streaming tenant. It appears after "Broker Service URL".
+
