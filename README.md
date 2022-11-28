@@ -39,9 +39,17 @@ Please follow the steps in order.
 - Under "Sink-Specific Configuration" select your Astra Database, enter the token Astra DB token you saved in a previous step. Select the "logs" keyspace and type "events" as your table name. If the configuration was applies correctly, the mapping should generate automatically.
 - Generate a streaming tenant token by clicking on "Settings" and then "Create token" and save it for the next steps.
 
-### Step Two: Generate and Process data
+### Step Two: Collect and send log data
 - Open this Github repo on GitPod and open the "2_logs_shipper.py" file.
 - Replace the "service_url" and "token" values by your streaming tenant values. You can get your "service_url" from the "Connect" tab of your streaming tenant. It appears after "Broker Service URL".
 - Execute the "2_logs_shipper.py" file.
-- Open the "3_data_analyzer.py" script and enter your "ASTRA_DB_ID" and "ASTRA_DB_APPLICATION_TOKEN"
+
+### Step Three: Analyze and visualize data.
+- Create an account at Grafana and click on "Settings" on the bottom left corner. Click on "Plugins", search for "Astra" and install the plugin.
+- Go back to your Grafana dashboard and click on "Integrations and Connections". Look for the "Astra" datasource and click "Create a AstraDB data source".
+- Enter the URI from your connect tab by replacing the ClusterID and AstraDBRegion. "${ASTRA_DB_ID}-${ASTRA_DB_REGION}.apps.astra.datastax.com:443". Enter the Astra Database token copied before.
+- Import the "Logs Dashboard" and "Events Dashboard". Observe the data in the logs dashboard.
+- Open the "3_data_analyzer.py" script and enter your "ASTRA_DB_ID" and "ASTRA_DB_APPLICATION_TOKEN".
 - Execute the "3_data_analyzer.py" script
+- Observe the data in the "events" dashboard.
+
