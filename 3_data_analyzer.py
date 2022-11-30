@@ -2,10 +2,10 @@ import requests
 import pandas
 import uuid
 
-ASTRA_DB_ID="b2431031-f6c1-4cff-bdd7-47b4a4810061"
-ASTRA_DB_REGION="us-central1"
+ASTRA_DB_ID="b2431031-f6c1-4cff-bdd7-47b4a4810061"    #REPLACE BY YOUR ASTRA_DB_ID
+ASTRA_DB_REGION="us-east-1"
 ASTRA_DB_KEYSPACE="logs"
-ASTRA_DB_APPLICATION_TOKEN="AstraCS:XilDZTkQebsDuWaXRcZAUSok:217a4ba6f471118ef80b97a000fd0769463799c056c514dbd68b3645038505ae"
+ASTRA_DB_APPLICATION_TOKEN="AstraCS:XilDZTkQebsDuWaXRcZAUSok:217a4ba6f471118ef80b97a000fd0769463799c056c514dbd68b3645038505ae" #REPLACE BY YOUR TOKEN
 get_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/events/rows/'
 metrics_post_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/metrics/rows/'
 alerts_post_url = 'https://'+ASTRA_DB_ID+'-'+ASTRA_DB_REGION+'.apps.astra.datastax.com/api/rest/v1/keyspaces/logs/tables/alerts/rows/'
@@ -21,7 +21,7 @@ def get_rows():
 df = pandas.DataFrame(get_rows())
 
 # count the amount of times the text "memory" appears in the dataframe
-memory_count=df['data'].str.count('LAPTOP-5MFKVMMH').sum()
+memory_count=df['data'].str.count('memory').sum()
 cpu_count=df['data'].str.count('cpu').sum()
 priviledge_escalation_count=df['data'].str.count('sudo').sum()
 
